@@ -3,9 +3,13 @@ const Promise = require("bluebird");
 const debug = require("debug")("dota2vods/tournament-data");
 const fs = require("fs");
 const path = require("path");
+const mkdirp = Promise.promisify(require("mkdirp"));
 Promise.promisifyAll(fs, path);
 
-const tournamentsFolder = path.join(__dirname, "tournaments");
+const buildFolder = path.resolve(process.argv[2]);
+const tournamentsFolder = "tournaments";
+const tournamentsSourceFolder = path.join(__dirname, tournamentsFolder);
+const tournamentsBuildFolder = path.join(buildFolder, tournamentsFolder);
 const jsonExt = ".json";
 
 function jsonFolderToObject(folder) {
@@ -40,22 +44,13 @@ function jsonFolderToObject(folder) {
     }));
 }
 
-fs.readdirAsync(tournamentsFolder).then(tournamentFolders => {
+mkdirp(tournamentsBuildFolder).then(() => fs.readdirAsync(tournamentsSourceFolder)).then(tournamentFolders => {
     for (let tournamentFolder of tournamentFolders) {
-        tournamentFolder = path.join(tournamentsFolder, tournamentFolder);
-        fs.statAsync(tournamentFolder).then(stat => {
-            if (stat.isDirectory()) {
-                return jsonFolderToObject(tournamentFolder);
-            }
+        const tournamentBuildFile = path.join(tournamentsBuildFolder, tournamentFolder + jsonExt);
+        const tournamentSourceFolder = path.join(tournamentsSourceFolder, tournamentFolder);
 
-            return false;
-        }).then(obj => {
-            if (obj === false) {
-                return false;
-            }
-
-            const json = JSON.stringify(obj);
-            return fs.writeFileAsync(tournamentFolder + jsonExt, json).then(() => json.length);
+        jsonFolderToObject(tournamentSourceFolder).then(JSON.stringify).then(json => {
+            return fs.writeFileAsync(tournamentBuildFile, json).then(() => json.length);
         }).then(jsonSize => {
             if (jsonSize !== false) {
                 debug("%s (%s bytes)", path.basename(tournamentFolder) + jsonExt, jsonSize);

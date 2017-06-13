@@ -2,6 +2,7 @@
   "private": true,
   "dependencies": {
     "bluebird": "^3.5.0",
-    "debug": "^2.6.3"
+    "debug": "^2.6.3",
+    "mkdirp": "^0.5.1"
   }
 }
