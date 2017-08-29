@@ -1,0 +1,1059 @@
+[
+    {
+        "teamA": "Team Dignitas",
+        "teamB": "Team DK",
+        "games": [
+            {
+                "id": "dignitas-dk-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/4gBJq36uH3E",
+                        "timestamps": {
+                            "Draft": "0:00",
+                            "Game start": "12:08"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dignitas-dk-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/7J3c4XnazYA",
+                        "timestamps": {
+                            "Draft": "0:00",
+                            "Game start": "10:49"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "MUFC",
+        "teamB": "LGD Gaming",
+        "games": [
+            {
+                "id": "mufc-lgd-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/Vs0rSYeVDvI",
+                        "timestamps": {
+                            "Draft": "0:12",
+                            "Game start": "11:58"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "mufc-lgd-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/QJNUwTVCWdI",
+                        "timestamps": {
+                            "Draft": "0:12",
+                            "Game start": "20:05"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "mousesports",
+        "teamB": "Team Zenith",
+        "games": [
+            {
+                "id": "mouz-zenith-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/NWL5yKhFc7g",
+                        "timestamps": {
+                            "Draft": "2:51",
+                            "Game start": "10:57"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "mouz-zenith-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/iy89p69Y914",
+                        "timestamps": {
+                            "Draft": "0:54",
+                            "Game start": "12:48"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Natus Vincere",
+        "teamB": "Fnatic.EU",
+        "games": [
+            {
+                "id": "navi-fnatic-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/5ClbhD6jfR8",
+                        "timestamps": {
+                            "Draft": "0:55",
+                            "Game start": "12:25"
+                        }
+                    },
+                    {
+                        "channel": "Dota 2 StarLadder",
+                        "language": "Russian",
+                        "link": "https://youtu.be/jRirKWXNfzA",
+                        "timestamps": {
+                            "Draft": "0:52",
+                            "Game start": "13:28"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "navi-fnatic-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/zJctkbDIzxk",
+                        "timestamps": {
+                            "Draft": "1:12",
+                            "Game start": "11:36"
+                        }
+                    },
+                    {
+                        "channel": "Dota 2 StarLadder",
+                        "language": "Russian",
+                        "link": "https://youtu.be/Wvg5CHPVN7I",
+                        "timestamps": {
+                            "Draft": "0:26",
+                            "Game start": "13:20"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team Dignitas",
+        "teamB": "MUFC",
+        "games": [
+            {
+                "id": "dignitas-mufc-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/4OXbd0zMCdc",
+                        "timestamps": {
+                            "Draft": "0:00",
+                            "Game start": "10:38"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dignitas-mufc-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/s4LjLBwU72g",
+                        "timestamps": {
+                            "Draft": "0:00",
+                            "Game start": "9:56"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team DK",
+        "teamB": "LGD Gaming",
+        "games": [
+            {
+                "id": "dk-lgd-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/Z80kVkxt5Is",
+                        "timestamps": {
+                            "Draft": "0:12",
+                            "Game start": "12:18"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dk-lgd-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/FAY1zakaf3c",
+                        "timestamps": {
+                            "Draft": "0:12",
+                            "Game start": "11:30"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "mousesports",
+        "teamB": "Natus Vincere",
+        "games": [
+            {
+                "id": "mouz-navi-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/-I8THBQMN1s",
+                        "timestamps": {
+                            "Draft": "2:11",
+                            "Game start": "11:24"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "mouz-navi-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/ZNUUOBXVOfI",
+                        "timestamps": {
+                            "Draft": "0:51",
+                            "Game start": "8:28"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team Zenith",
+        "teamB": "Fnatic.EU",
+        "games": [
+            {
+                "id": "zenith-fnatic-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/L6QvDou1Fh4",
+                        "timestamps": {
+                            "Draft": "3:44",
+                            "Game start": "10:06"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "zenith-fnatic-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/uc2ffS7k0-A",
+                        "timestamps": {
+                            "Draft": "0:51",
+                            "Game start": "7:39"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team Dignitas",
+        "teamB": "LGD Gaming",
+        "games": [
+            {
+                "id": "dignitas-lgd-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/cQJdol08Lbk",
+                        "timestamps": {
+                            "Draft": "0:02",
+                            "Game start": "11:19"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dignitas-lgd-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/cVxakgB2q9g",
+                        "timestamps": {
+                            "Draft": "0:00",
+                            "Game start": "9:49"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team DK",
+        "teamB": "MUFC",
+        "games": [
+            {
+                "id": "dk-mufc-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/v0ezELvjCUI",
+                        "timestamps": {
+                            "Draft": "0:12",
+                            "Game start": "11:43"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dk-mufc-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/mdarrSCDb5Q",
+                        "timestamps": {
+                            "Draft": "0:12",
+                            "Game start": "10:23"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "mousesports",
+        "teamB": "Fnatic.EU",
+        "games": [
+            {
+                "id": "mouz-fnatic-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/UFEcNs1j9xo",
+                        "timestamps": {
+                            "Draft": "4:44",
+                            "Game start": "13:44"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "mouz-fnatic-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/CP3dHAR-YwY",
+                        "timestamps": {
+                            "Draft": "1:06",
+                            "Game start": "10:58"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team Zenith",
+        "teamB": "Natus Vincere",
+        "games": [
+            {
+                "id": "zenith-navi-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/Jj_0cxCCnK0",
+                        "timestamps": {
+                            "Draft": "4:42",
+                            "Game start": "11:19"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "zenith-navi-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/jLitG2gtSgk",
+                        "timestamps": {
+                            "Draft": "0:51",
+                            "Game start": "10:55"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team Dignitas",
+        "teamB": "mousesports",
+        "games": [
+            {
+                "id": "dignitas-mouz-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "Dota 2 StarLadder",
+                        "language": "Russian",
+                        "link": "https://youtu.be/wHmenaSJMqI",
+                        "timestamps": {
+                            "Draft": "0:30",
+                            "Game start": "10:17"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dignitas-mouz-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/ktsxJ0BbzC0",
+                        "timestamps": {
+                            "Draft": "0:49",
+                            "Game start": "7:27"
+                        }
+                    },
+                    {
+                        "channel": "Dota 2 StarLadder",
+                        "language": "Russian",
+                        "link": "https://youtu.be/IMP60ex08zU",
+                        "timestamps": {
+                            "Draft": "0:11",
+                            "Game start": "6:29"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team DK",
+        "teamB": "Team Zenith",
+        "games": [
+            {
+                "id": "dk-zenith-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/eT9TWafUUGA",
+                        "timestamps": {
+                            "Draft": "4:06",
+                            "Game start": "20:08"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dk-zenith-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/uGLm29gA-Oo",
+                        "timestamps": {
+                            "Draft": "0:48",
+                            "Game start": "12:52"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "MUFC",
+        "teamB": "Natus Vincere",
+        "games": [
+            {
+                "id": "mufc-navi-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/bywRdYmeMhI",
+                        "timestamps": {
+                            "Draft": "0:13",
+                            "Game start": "12:24"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "mufc-navi-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/nFBMbTkg4ZU",
+                        "timestamps": {
+                            "Draft": "0:13",
+                            "Game start": "12:42"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "LGD Gaming",
+        "teamB": "Fnatic.EU",
+        "games": [
+            {
+                "id": "lgd-fnatic-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/XikHfI4Oa7E",
+                        "timestamps": {
+                            "Draft": "0:05",
+                            "Game start": "11:46"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "lgd-fnatic-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/acK3jbfzLQc",
+                        "timestamps": {
+                            "Draft": "0:04",
+                            "Game start": "11:39"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team Dignitas",
+        "teamB": "Team Zenith",
+        "games": [
+            {
+                "id": "dignitas-zenith-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/AnuczvIXAKE",
+                        "timestamps": {
+                            "Draft": "0:38",
+                            "Game start": "4:40"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dignitas-zenith-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/WNHekBTsE68",
+                        "timestamps": {
+                            "Draft": "0:42",
+                            "Game start": "5:18"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team DK",
+        "teamB": "Natus Vincere",
+        "games": [
+            {
+                "id": "dk-navi-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/tJdpdY3x4ZA",
+                        "timestamps": {
+                            "Draft": "2:43",
+                            "Game start": "10:28"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dk-navi-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/ItX7xI0Rc2E",
+                        "timestamps": {
+                            "Draft": "0:47",
+                            "Game start": "12:43"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "MUFC",
+        "teamB": "Fnatic.EU",
+        "games": [
+            {
+                "id": "mufc-fnatic-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/XpIiifb0Ejo",
+                        "timestamps": {
+                            "Draft": "0:13",
+                            "Game start": "10:32"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "mufc-fnatic-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/OOfxL5dfsbI",
+                        "timestamps": {
+                            "Draft": "0:13",
+                            "Game start": "10:31"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "LGD Gaming",
+        "teamB": "mousesports",
+        "games": [
+            {
+                "id": "lgd-mouz-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/ZR-Z5znn3uI",
+                        "timestamps": {
+                            "Draft": "0:02",
+                            "Game start": "11:15"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "lgd-mouz-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/jXHHpRreGxQ",
+                        "timestamps": {
+                            "Draft": "0:00",
+                            "Game start": "11:00"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team Dignitas",
+        "teamB": "Natus Vincere",
+        "games": [
+            {
+                "id": "dignitas-navi-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/a8gljCOf2Vs",
+                        "timestamps": {
+                            "Draft": "4:20",
+                            "Game start": "10:21"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dignitas-navi-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/8UXLvWKbZmo",
+                        "timestamps": {
+                            "Draft": "0:43",
+                            "Game start": "9:20"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team DK",
+        "teamB": "Fnatic.EU",
+        "games": [
+            {
+                "id": "dk-fnatic-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/IRffYmibbM0",
+                        "timestamps": {
+                            "Draft": "2:55",
+                            "Game start": "9:51"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dk-fnatic-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/6FO-yx7AdXU",
+                        "timestamps": {
+                            "Draft": "0:49",
+                            "Game start": "9:48"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "MUFC",
+        "teamB": "mousesports",
+        "games": [
+            {
+                "id": "mufc-mouz-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/faq0Fcrabsg",
+                        "timestamps": {
+                            "Draft": "0:13",
+                            "Game start": "9:12"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "mufc-mouz-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/bf-OVyfo2oU",
+                        "timestamps": {
+                            "Draft": "0:13",
+                            "Game start": "11:16"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "LGD Gaming",
+        "teamB": "Team Zenith",
+        "games": [
+            {
+                "id": "lgd-zenith-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/WoSYB7Gy8JU",
+                        "timestamps": {
+                            "Draft": "0:01",
+                            "Game start": "9:15"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "lgd-zenith-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/PdoiuTo7Les",
+                        "timestamps": {
+                            "Draft": "0:05",
+                            "Game start": "10:53"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team Dignitas",
+        "teamB": "Fnatic.EU",
+        "games": [
+            {
+                "id": "dignitas-fnatic-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/t7KWWJZcT0U",
+                        "timestamps": {
+                            "Draft": "0:00",
+                            "Game start": "8:50"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dignitas-fnatic-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "AyeseeTV",
+                        "language": "English",
+                        "link": "https://youtu.be/kMC2a8gW78g",
+                        "timestamps": {
+                            "Draft": "0:00",
+                            "Game start": "10:42"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team DK",
+        "teamB": "mousesports",
+        "games": [
+            {
+                "id": "dk-mouz-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/Sa8Bv218q3o",
+                        "timestamps": {
+                            "Draft": "0:13",
+                            "Game start": "10:54"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "dk-mouz-game-2",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "SheeverGaming",
+                        "language": "English",
+                        "link": "https://youtu.be/ojJ-qc87yQU",
+                        "timestamps": {
+                            "Draft": "0:13",
+                            "Game start": "11:30"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "MUFC",
+        "teamB": "Team Zenith",
+        "games": [
+            {
+                "id": "mufc-zenith-game-1",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/9HtOC92Cjck",
+                        "timestamps": {
+                            "Draft": "3:40",
+                            "Game start": "12:55"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "mufc-zenith-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "joinDOTA",
+                        "language": "English",
+                        "link": "https://youtu.be/p-LPg7CdcWo",
+                        "timestamps": {
+                            "Draft": "1:19",
+                            "Game start": "10:58"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "LGD Gaming",
+        "teamB": "Natus Vincere",
+        "games": [
+            {
+                "id": "lgd-navi-game-1",
+                "winner": "teamA",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/lvbOe5pGJTo",
+                        "timestamps": {
+                            "Draft": "0:49",
+                            "Game start": "11:13"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "lgd-navi-game-2",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/sk6UejMWBEo",
+                        "timestamps": {
+                            "Draft": "0:49",
+                            "Game start": "8:34"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "teamA": "Team Dignitas",
+        "teamB": "LGD Gaming",
+        "caption": "Tiebreaker Match",
+        "games": [
+            {
+                "id": "tiebreaker-dignitas-lgd",
+                "winner": "teamB",
+                "vods": [
+                    {
+                        "channel": "Beyond the Summit",
+                        "language": "English",
+                        "link": "https://youtu.be/CfW8IOhBvIM",
+                        "timestamps": {
+                            "Draft": "0:55",
+                            "Game start": "6:33"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]
