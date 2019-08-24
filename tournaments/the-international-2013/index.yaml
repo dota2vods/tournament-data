@@ -1,0 +1,5 @@
+name: The International 2013
+stagesOrder:
+  - group-stage
+  - main-stage
+defaultStage: group-stage

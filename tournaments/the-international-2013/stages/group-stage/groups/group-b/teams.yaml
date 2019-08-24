@@ -1,0 +1,33 @@
+---
+- name: Invictus Gaming
+  short: iG
+  endPlace: 3
+  endResult: [8, 6]
+- name: TongFu
+  short: TongFu
+  endPlace: 2
+  endResult: [8, 6]
+- name: Team Liquid
+  short: Liquid
+  endPlace: 5
+  endResult: [7, 7]
+- name: Orange Esports
+  short: Orange
+  endPlace: 4
+  endResult: [8, 6]
+- name: Alliance
+  short: "[A]"
+  endPlace: 1
+  endResult: [14, 0]
+- name: Virtus.pro
+  short: VP
+  endPlace: 7
+  endResult: [3, 11]
+- name: LGD International
+  short: LGD.int
+  endPlace: 6
+  endResult: [5, 9]
+- name: RattleSnake
+  short: RSnake
+  endPlace: 7
+  endResult: [3, 11]

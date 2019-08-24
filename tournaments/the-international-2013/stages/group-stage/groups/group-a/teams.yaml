@@ -1,0 +1,32 @@
+- name: Fnatic.EU
+  short: Fnc.EU
+  endPlace: 3
+  endResult: [9, 5]
+- name: Natus Vincere
+  short: Na`vi
+  endPlace: 1
+  endResult: [11, 3]
+- name: Team Zenith
+  short: Zenith
+  endPlace: 6
+  endResult: [6, 8]
+- name: Team Dignitas
+  short: Dignitas
+  endPlace: 5
+  endResult: [8, 7]
+- name: Team DK
+  short: DK
+  endPlace: 2
+  endResult: [10, 4]
+- name: MUFC
+  short: MUFC
+  endPlace: 8
+  endResult: [0, 14]
+- name: mousesports
+  short: mouz
+  endPlace: 7
+  endResult: [4, 10]
+- name: LGD Gaming
+  short: LGD
+  endPlace: 4
+  endResult: [9, 6]

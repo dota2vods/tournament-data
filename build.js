@@ -3,12 +3,12 @@ const fs = require("fs").promises;
 const path = require("path");
 const rmdir = require("rmdir-recursive-async");
 const mkdirp = require("mkdirp-promise");
+const yaml = require("js-yaml");
 
 const buildFolder = path.resolve(__dirname, process.argv[2] || "build");
 const tournamentsSourceFolder = path.join(__dirname, "tournaments");
 const tournamentsBuildFolder = path.join(buildFolder, "tournaments");
-const indexFile = "index.json";
-const jsonExt = ".json";
+const indexFile = "index.yaml";
 
 async function folderToObject(folder) {
     const files = await fs.readdir(folder, {withFileTypes: true});
@@ -27,9 +27,9 @@ async function folderToObject(folder) {
 
         const filePath = path.join(folder, file.name);
         if (file.isDirectory()) {
-            fileData = folderToObject(filePath);
+            fileData = await folderToObject(filePath);
         } else {
-            fileData = JSON.parse(await fs.readFile(filePath));
+            fileData = yaml.safeLoad(await fs.readFile(filePath));
         }
 
         if (file.name === indexFile) {
@@ -37,7 +37,7 @@ async function folderToObject(folder) {
             data = fileData;
         } else {
             //All other files are used as a new key
-            data[path.basename(file.name, jsonExt)] = fileData;
+            data[path.basename(file.name, ".yaml")] = fileData;
         }
     }
 
@@ -60,12 +60,12 @@ async function build() {
         // Write
         const json = JSON.stringify(tournamentData);
         await fs.writeFile(
-            path.join(tournamentsBuildFolder, tournamentFolder + jsonExt),
+            path.join(tournamentsBuildFolder, tournamentFolder + ".json"),
             json
         );
 
         // Output status
-        console.log(tournamentFolder + jsonExt + " (" + json.length + " bytes)");
+        console.log(tournamentFolder + ".json (" + json.length + " bytes)");
     }
 
     // Copy mockup files

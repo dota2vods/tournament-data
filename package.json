@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
+    "js-yaml": "^3.13.1",
     "mkdirp-promise": "^5.0.1",
     "rmdir-recursive-async": "^0.2.2"
   },
