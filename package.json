@@ -1,8 +1,10 @@
 {
   "private": true,
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "debug": "^2.6.3",
-    "mkdirp": "^0.5.1"
+    "mkdirp-promise": "^5.0.1",
+    "rmdir-recursive-async": "^0.2.2"
+  },
+  "scripts": {
+    "build": "./build.js"
   }
 }

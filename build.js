@@ -1,74 +1,78 @@
 #!/usr/bin/env node
-const Promise = require("bluebird");
-const debug = require("debug")("dota2vods/tournament-data");
-const fs = require("fs");
+const fs = require("fs").promises;
 const path = require("path");
-const mkdirp = Promise.promisify(require("mkdirp"));
-Promise.promisifyAll(fs, path);
+const rmdir = require("rmdir-recursive-async");
+const mkdirp = require("mkdirp-promise");
 
-const buildFolder = path.resolve(process.argv[2]);
-const tournamentsFolder = "tournaments";
-const tournamentsSourceFolder = path.join(__dirname, tournamentsFolder);
-const tournamentsBuildFolder = path.join(buildFolder, tournamentsFolder);
+const buildFolder = path.resolve(__dirname, process.argv[2] || "build");
+const tournamentsSourceFolder = path.join(__dirname, "tournaments");
+const tournamentsBuildFolder = path.join(buildFolder, "tournaments");
 const indexFile = "index.json";
 const jsonExt = ".json";
 
-function jsonFolderToObject(folder) {
-    return fs.readdirAsync(folder).then(jsonFiles => new Promise((resolve, reject) => {
-        let obj = {};
+async function folderToObject(folder) {
+    const files = await fs.readdir(folder, {withFileTypes: true});
 
-        //Make sure the index file gets loaded first
-        jsonFiles.sort((a, b) => {
-            const aScore = a === indexFile ? -1 : 0;
-            const bScore = b === indexFile ? -1 : 0;
-            return aScore - bScore;
-        });
+    let data = {};
 
-        //Load json files sequentially
-        (function loadNextJsonFile() {
-            const jsonFile = path.join(folder, jsonFiles.shift());
+    //Make sure the index file gets loaded first
+    files.sort((a, b) => {
+        const aScore = a.name === indexFile ? -1 : 0;
+        const bScore = b.name === indexFile ? -1 : 0;
+        return aScore - bScore;
+    });
 
-            fs.statAsync(jsonFile).then(stat => {
-                if (stat.isDirectory()) {
-                    return jsonFolderToObject(jsonFile);
-                }
+    for (const file of files) {
+        let fileData;
 
-                return fs.readFileAsync(jsonFile).then(JSON.parse);
-            }).catch(err => {
-                throw new Error("Error while parsing \"" + jsonFile + "\":\n" + err.stack);
-            }).then(value => {
-                if (typeof value === "object" && Object.keys(value).length > 0) {
-                    if (path.basename(jsonFile) === indexFile) {
-                        //The index file gets applied to the object directly
-                        obj = value;
-                    } else {
-                        //All other files are used as a new key
-                        obj[path.basename(jsonFile, jsonExt)] = value;
-                    }
-                }
-            }).finally(() => {
-                if (jsonFiles.length > 0) {
-                    loadNextJsonFile();
-                } else {
-                    //If all directory entries have been checked, resolve promise
-                    resolve(obj);
-                }
-            });
-        })();
-    }));
+        const filePath = path.join(folder, file.name);
+        if (file.isDirectory()) {
+            fileData = folderToObject(filePath);
+        } else {
+            fileData = JSON.parse(await fs.readFile(filePath));
+        }
+
+        if (file.name === indexFile) {
+            //The index file gets applied to the object directly
+            data = fileData;
+        } else {
+            //All other files are used as a new key
+            data[path.basename(file.name, jsonExt)] = fileData;
+        }
+    }
+
+    return data;
 }
 
-mkdirp(tournamentsBuildFolder).then(() => fs.readdirAsync(tournamentsSourceFolder)).then(tournamentFolders => {
-    for (let tournamentFolder of tournamentFolders) {
-        const tournamentBuildFile = path.join(tournamentsBuildFolder, tournamentFolder + jsonExt);
-        const tournamentSourceFolder = path.join(tournamentsSourceFolder, tournamentFolder);
+async function build() {
+    // Clear build folder
+    await rmdir(buildFolder, false);
 
-        jsonFolderToObject(tournamentSourceFolder).then(JSON.stringify).then(json => {
-            return fs.writeFileAsync(tournamentBuildFile, json).then(() => json.length);
-        }).then(jsonSize => {
-            if (jsonSize !== false) {
-                debug("%s (%s bytes)", path.basename(tournamentFolder) + jsonExt, jsonSize);
-            }
-        });
+    // Recreate it and make sure the parent folders also exist.
+    await mkdirp(tournamentsBuildFolder);
+
+    // Go through all tournament folders and create a json file for every tournament
+    const tournamentFolders = await fs.readdir(tournamentsSourceFolder);
+    for (const tournamentFolder of tournamentFolders) {
+        // Read all json file in the folder and turn them into a single json file
+        const tournamentData = await folderToObject(path.join(tournamentsSourceFolder, tournamentFolder));
+
+        // Write
+        const json = JSON.stringify(tournamentData);
+        await fs.writeFile(
+            path.join(tournamentsBuildFolder, tournamentFolder + jsonExt),
+            json
+        );
+
+        // Output status
+        console.log(tournamentFolder + jsonExt + " (" + json.length + " bytes)");
     }
-});
+
+    // Copy mockup files
+    await [
+        'tournament-list.json',
+        'tournaments-overview.json',
+    ].map(async file => await fs.copyFile(path.join(__dirname, file), path.join(buildFolder, file)))
+}
+
+build();
