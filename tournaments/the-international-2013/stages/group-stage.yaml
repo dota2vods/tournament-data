@@ -1,0 +1,11 @@
+name: Group Stage
+type: groups
+displayInfo:
+  resultsMeaning: [Wins, Losses]
+groups:
+  - name: Group A
+    teams: !include group-stage/group-a/teams.yaml
+    matches: !include group-stage/group-a/matches.yaml
+  - name: Group B
+    teams: !include group-stage/group-b/teams.yaml
+    matches: !include group-stage/group-b/matches.yaml

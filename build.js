@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const fs = require("fs").promises;
+const { readFileSync, promises: fs } = require("fs");
 const path = require("path");
 const rmdir = require("rmdir-recursive-async");
 const mkdirp = require("mkdirp-promise");
@@ -8,40 +8,24 @@ const yaml = require("js-yaml");
 const buildFolder = path.resolve(__dirname, process.argv[2] || "build");
 const tournamentsSourceFolder = path.join(__dirname, "tournaments");
 const tournamentsBuildFolder = path.join(buildFolder, "tournaments");
-const indexFile = "index.yaml";
 
-async function folderToObject(folder) {
-    const files = await fs.readdir(folder, {withFileTypes: true});
-
-    let data = {};
-
-    //Make sure the index file gets loaded first
-    files.sort((a, b) => {
-        const aScore = a.name === indexFile ? -1 : 0;
-        const bScore = b.name === indexFile ? -1 : 0;
-        return aScore - bScore;
+function createIncludeType(basePath) {
+    return new yaml.Type("!include", {
+        kind: "scalar", // string -> !include stages/group-stage.yml
+        resolve: data => typeof data === "string" && data !== "",
+        construct: function (fileToInclude) {
+            return loadFile(path.join(basePath, fileToInclude));
+        },
     });
+}
 
-    for (const file of files) {
-        let fileData;
+function loadFile(filePath) {
+    const IncludeType = createIncludeType(path.dirname(filePath));
+    const INCLUDE_SCHEMA = yaml.Schema.create([ IncludeType ]);
 
-        const filePath = path.join(folder, file.name);
-        if (file.isDirectory()) {
-            fileData = await folderToObject(filePath);
-        } else {
-            fileData = yaml.safeLoad(await fs.readFile(filePath));
-        }
-
-        if (file.name === indexFile) {
-            //The index file gets applied to the object directly
-            data = fileData;
-        } else {
-            //All other files are used as a new key
-            data[path.basename(file.name, ".yaml")] = fileData;
-        }
-    }
-
-    return data;
+    return yaml.load(readFileSync(filePath), {
+        schema: INCLUDE_SCHEMA,
+    });
 }
 
 async function build() {
@@ -54,8 +38,9 @@ async function build() {
     // Go through all tournament folders and create a json file for every tournament
     const tournamentFolders = await fs.readdir(tournamentsSourceFolder);
     for (const tournamentFolder of tournamentFolders) {
-        // Read all json file in the folder and turn them into a single json file
-        const tournamentData = await folderToObject(path.join(tournamentsSourceFolder, tournamentFolder));
+        // Load tournament data, start with the index.yaml file
+        const filePath = path.join(tournamentsSourceFolder, tournamentFolder, "index.yaml");
+        const tournamentData = loadFile(filePath);
 
         // Write
         const json = JSON.stringify(tournamentData);
