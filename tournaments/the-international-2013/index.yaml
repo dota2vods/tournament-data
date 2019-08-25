@@ -1,4 +1,5 @@
 name: The International 2013
+aliases: [TI3, TI 3, TI13, TI 13]
 meta: !include meta.yaml
 stages:
   - !include stages/group-stage.yaml
