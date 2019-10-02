@@ -17,20 +17,20 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER I
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const { readFileSync, promises: fs } = require("fs");
-const path = require("path");
-const rmdir = require("rmdir-recursive-async");
-const mkdirp = require("mkdirp-promise");
-const yaml = require("js-yaml");
+const { readFileSync, promises: fs } = require('fs');
+const path = require('path');
+const rmdir = require('rmdir-recursive-async');
+const mkdirp = require('mkdirp-promise');
+const yaml = require('js-yaml');
 
-const buildFolder = path.resolve(__dirname, process.argv[2] || "build");
-const tournamentsSourceFolder = path.join(__dirname, "tournaments");
-const tournamentsBuildFolder = path.join(buildFolder, "tournaments");
+const buildFolder = path.resolve(__dirname, process.argv[2] || 'build');
+const tournamentsSourceFolder = path.join(__dirname, 'tournaments');
+const tournamentsBuildFolder = path.join(buildFolder, 'tournaments');
 
 function createIncludeType(basePath) {
-    return new yaml.Type("!include", {
-        kind: "scalar", // string -> !include stages/group-stage.yml
-        resolve: data => typeof data === "string" && data !== "",
+    return new yaml.Type('!include', {
+        kind: 'scalar', // string -> !include stages/group-stage.yml
+        resolve: data => typeof data === 'string' && data !== '',
         construct: function (fileToInclude) {
             return loadFile(path.join(basePath, fileToInclude));
         },
@@ -57,18 +57,18 @@ async function build() {
     const tournamentFolders = await fs.readdir(tournamentsSourceFolder);
     for (const tournamentFolder of tournamentFolders) {
         // Load tournament data, start with the index.yaml file
-        const filePath = path.join(tournamentsSourceFolder, tournamentFolder, "index.yaml");
+        const filePath = path.join(tournamentsSourceFolder, tournamentFolder, 'index.yaml');
         const tournamentData = loadFile(filePath);
 
         // Write
         const json = JSON.stringify(tournamentData);
         await fs.writeFile(
-            path.join(tournamentsBuildFolder, tournamentFolder + ".json"),
+            path.join(tournamentsBuildFolder, tournamentFolder + '.json'),
             json
         );
 
         // Output status
-        console.log(tournamentFolder + ".json (" + json.length + " bytes)");
+        console.log(tournamentFolder + '.json (' + json.length + ' bytes)');
     }
 
     // Copy mockup files
