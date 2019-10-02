@@ -68,7 +68,7 @@ async function build() {
         );
 
         // Output status
-        console.log(tournamentFolder + '.json (' + json.length + ' bytes)');
+        console.log(tournamentFolder + '.json (' + Math.round(json.length / 1024 * 100) / 100 + ' KB)');
     }
 
     // Copy mockup files
