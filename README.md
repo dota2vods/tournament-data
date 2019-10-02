@@ -15,12 +15,12 @@ As we use Liquipedia as a source, the data (`tournament-data/`) is under the sam
 [CC-BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/us/)  
 See also: [Using Liquipedia Content](https://liquipedia.net/dota2/Liquipedia:Copyrights#Using_Liquipedia_Content)
 
-The build code is under MIT.
+The javascript code is under MIT.
 
-Contributing
-------------
+Editing
+-------
 
-The goal is to create and import as much data as possible automatically but it will never be perfect.  
+The goal is to automatically import and create as much data as possible but it will never be perfect.  
 If you see a mistake or want to add something, click yourself through the file tree, click on the file you want to
 edit and then press the small edit pen on the right. Github will then automatically fork this repository for you
 (aka clone it to your user namespace) and allow you to edit the file. Once your are done, describe your changes, click
