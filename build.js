@@ -17,15 +17,21 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER I
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+const { promisify } = require('util');
 const { readFileSync, promises: fs } = require('fs');
 const path = require('path');
+const childProcess = require('child_process');
 const rmdir = require('rmdir-recursive-async');
 const mkdirp = require('mkdirp-promise');
 const yaml = require('js-yaml');
 
+const exec = promisify(childProcess.exec);
+
 const buildFolder = path.resolve(__dirname, process.argv[2] || 'build');
 const tournamentsSourceFolder = path.join(__dirname, 'tournaments');
 const tournamentsBuildFolder = path.join(buildFolder, 'tournaments');
+const tournamentListFile = 'tournament-list.json';
+const tournamentsOverviewFile = 'tournaments-overview.json';
 
 function createIncludeType(basePath) {
     return new yaml.Type('!include', {
@@ -46,6 +52,22 @@ function loadFile(filePath) {
     });
 }
 
+async function getRecentlyUpdatedTournaments(diffFilter = '') {
+    const {stdout} = await exec(`
+        for folder in tournaments/*; do
+            echo "$(git log -1 --format="%at" --diff-filter=${diffFilter} -- \${folder}) \${folder}"
+        done
+    `);
+
+    return stdout.split('\n').filter(value => value.length !== 0).map(value => {
+        const [time, file] = value.split(' ', 2);
+        return {
+            time: parseInt(time, 10),
+            id: file.substr('tournaments/'.length),
+        }
+    }).sort((a, b) => b.time - a.time);
+}
+
 async function build() {
     // Clear build folder
     await rmdir(buildFolder, false);
@@ -54,13 +76,23 @@ async function build() {
     await mkdirp(tournamentsBuildFolder);
 
     // Go through all tournament folders and create a json file for every tournament
+    const tournamentList = [];
+    const idToNameMap = {};
     const tournamentFolders = await fs.readdir(tournamentsSourceFolder);
     for (const tournamentFolder of tournamentFolders) {
         // Load tournament data, start with the index.yaml file
         const filePath = path.join(tournamentsSourceFolder, tournamentFolder, 'index.yaml');
         const tournamentData = loadFile(filePath);
 
-        // Write
+        // Populate tournament list and idToNameMap
+        tournamentList.push({
+            id: tournamentFolder,
+            name: tournamentData.name,
+            aliases: tournamentData.aliases || [],
+        });
+        idToNameMap[tournamentFolder] = tournamentData.name;
+
+        // Write tournament file
         const json = JSON.stringify(tournamentData);
         await fs.writeFile(
             path.join(tournamentsBuildFolder, tournamentFolder + '.json'),
@@ -71,11 +103,35 @@ async function build() {
         console.log(tournamentFolder + '.json (' + Math.round(json.length / 1024 * 100) / 100 + ' KB)');
     }
 
-    // Copy mockup files
-    await [
-        'tournament-list.json',
-        'tournaments-overview.json',
-    ].map(async file => await fs.copyFile(path.join(__dirname, file), path.join(buildFolder, file)))
+    // Write tournament list
+    await fs.writeFile(
+        path.join(buildFolder, tournamentListFile),
+        JSON.stringify(tournamentList),
+    );
+
+    // Get the 5 most recently added tournaments
+    const recentlyAdded = (await getRecentlyUpdatedTournaments('A')).slice(0, 5).map(tournament => ({
+        ...tournament,
+        name: idToNameMap[tournament.id],
+    }));
+
+    // Get 5 most recently updated tournaments
+    const recentlyUpdated = (await getRecentlyUpdatedTournaments()).filter(({id: tournament}) => (
+        // Filter out recently added tournaments
+        recentlyAdded.findIndex(({id: addedTournament}) => addedTournament === tournament) < 0
+    )).slice(0, 5).map(tournament => ({
+        ...tournament,
+        name: idToNameMap[tournament.id],
+    }));
+
+    // Generate overview
+    await fs.writeFile(
+        path.join(buildFolder, tournamentsOverviewFile),
+        JSON.stringify({
+            recentlyAdded,
+            recentlyUpdated,
+        }),
+    );
 }
 
 build();
