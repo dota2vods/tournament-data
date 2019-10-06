@@ -11,7 +11,7 @@ Feel free to use this data for other projects.
 License
 -------
 
-As we use Liquipedia as a source, the data (`tournament-data/`) is under the same license as the Liquipedia content:
+As we use Liquipedia as a source, the data (`tournaments/`) is under the same license as the Liquipedia content:
 [CC-BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/us/)  
 See also: [Using Liquipedia Content](https://liquipedia.net/dota2/Liquipedia:Copyrights#Using_Liquipedia_Content)
 
@@ -31,7 +31,7 @@ If you have a question or want to suggest something, feel free to open an issue.
 Developing
 ----------
 
-The repository comes with a build file (see [Building](#building)) and an importer ([Importing](#importing).  
+The repository comes with a build file (see [Building](#building)) and an importer ([Importing](#importing)).  
 Feel free to study or use them in your own projects. They are under MIT. PRs are welcome.
 
 *Note: Dependencies only needed for the importer should be added as dev dependencies (`yarn add -D`) so they don't
