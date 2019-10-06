@@ -28,11 +28,44 @@ edit and then press the small edit pen on the right. Github will then automatica
 
 If you have a question or want to suggest something, feel free to open an issue.
 
-Building
---------
+Developing
+----------
+
+The repository comes with a build file (see [Building](#building)) and an importer ([Importing](#importing).  
+Feel free to study or use them in your own projects. They are under MIT. PRs are welcome.
+
+*Note: Dependencies only needed for the importer should be added as dev dependencies (`yarn add -D`) so they don't
+clutter up the CI build process.*
+
+### Building
 
 ```shell script
 yarn install
 yarn build
 # Done
+```
+
+### Importing
+
+This repository comes with a ready to use importer to automatically import tournament data.
+The importer is built to support multiple sources but only [Liquipedia](https://liquipedia.net/) is supported right now.
+
+~~When updating an existing tournament, custom changes are not overwritten. This allows us to update a tournament while
+keeping our extra data that the source may not provide. If there is an incorrect value in the source data, the source
+should also be updated by the author, if possible. This way other people can benefit from it too.~~
+*<- Not yet implemented, importer is WIP*
+
+```shell script
+# yarn importer --help
+Usage: yarn importer [command] [argument]
+
+Importer to automatically import and update tournaments.
+
+Options:
+  -h, --help                    output usage information
+
+Commands:
+  import <tournament_url>       Import a new tournament or update an existing one. (Default behaviour if no command is specified)
+  from-category <category_url>  Import and update all tournaments of a category (mainly used for automation).
+  update [<tournament_folder>]  Update all imported tournaments. If <tournament_folder> is specified, only this tournament will be updated
 ```
