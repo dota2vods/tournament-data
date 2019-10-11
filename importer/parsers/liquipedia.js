@@ -51,7 +51,7 @@ exports.parseCategory = async categoryUrl => {
 
     const tournamentUrls = [];
     for (const categoryMember of categoryMembers) {
-        const url = `${urlPrefix}/${wiki}/${categoryMember.title}`;
+        const url = `${urlPrefix}/${wiki}/${categoryMember.title.replace(/\W+/g, '_')}`;
         tournamentUrls.push(fullUrl(url));
     }
 
