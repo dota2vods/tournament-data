@@ -98,7 +98,6 @@ async function fetch(url, acceptJsonHeader = false) {
     if (lastRequest) {
         const timeToWait = minTimeBetweenRequests - (Date.now() - lastRequest);
         if (timeToWait > 0) {
-            console.log('Waiting ' + timeToWait + 'ms...');
             await sleep(timeToWait);
         }
     }
