@@ -65,6 +65,7 @@ exports.parseTournament = async tournamentUrl => {
     const info = findAndParseTemplateIncludes(source, 'Infobox league')[0];
     const tournamentData = {
         name: info.name,
+        aliases: info.shortname && [info.shortname, info.shortname.replace(/ /g, '')],
         meta: {
             startDate: info.sdate || info.date,
             endDate: info.edate || info.date,
