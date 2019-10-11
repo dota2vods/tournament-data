@@ -70,11 +70,11 @@ exports.parseTournament = async tournamentUrl => {
             endDate: info.edate || info.date,
             info: {
                 'Organizer': info.organizer,
-                'Sponsor': info.sponsor && info.sponsor.replace(/<br \/>/g, ', '),
+                'Sponsor': removeLineBreaks(info.sponsor, ', '),
                 'Game Version': info.patch,
                 'Type': info.type,
                 'Location': (info.city || '') + (info.city && info.country ? ', ' : '') + (info.country || ''),
-                'Format': info.format,
+                'Format': removeLineBreaks(info.format),
                 'Prize pool': info.prizepoolusd ? '$' + info.prizepoolusd + ' USD' : null,
                 'Liquipedia Tier': liquipediaTierTemplateToText[info.liquipediatier],
             },
@@ -169,4 +169,8 @@ function mediaWikiCodeToMarkdown(text) {
 
     // At last, return the transformed text
     return text;
+}
+
+function removeLineBreaks(text, replaceWith = ' ') {
+    return text && text.replace(/<br \/>/g, replaceWith);
 }
