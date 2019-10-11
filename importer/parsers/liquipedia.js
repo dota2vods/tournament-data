@@ -15,8 +15,9 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER I
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+const querystring = require("querystring");
+const sleep = require('sleep-promise');
 const realFetch = require('node-fetch');
-const cheerio = require('cheerio');
 
 const urlPrefix = 'https://liquipedia.net';
 const templateOpeningTag = '{{';
@@ -28,15 +29,31 @@ const liquipediaTierTemplateToText = {
 exports.supports = url => url.startsWith(urlPrefix);
 
 exports.parseCategory = async categoryUrl => {
-    const $ = await loadDocument(categoryUrl);
-    const $tournaments = $('.mw-category-group > ul > li > a');
+    // We need to get the pages in the category via the api, so first extract the wiki and category title from the url
+    const wiki = categoryUrl.substring(urlPrefix.length + 1, categoryUrl.indexOf('/', urlPrefix.length + 1));
+    const categoryTitle = categoryUrl.substr(categoryUrl.lastIndexOf('/') + 1);
+
+    // Throw error if the wiki or the category title was not found
+    if (wiki.startsWith(urlPrefix) || wiki.length === 0 || !categoryTitle.startsWith('Category:')) {
+        throw new Error(`Can not extract category title from url "${categoryUrl}".`)
+    }
+
+    const categoryApiUrl = `${urlPrefix}/${wiki}/api.php?` + querystring.stringify({
+        'action': 'query',
+        'format': 'json',
+        'list': 'categorymembers',
+        'cmprop': 'title',
+        'cmlimit': 500, // 500 is the maximum. If we every parse categories with more that 500 tournaments, we need to
+                        // account for that
+        'cmtitle': categoryTitle,
+    });
+    const {query: {categorymembers: categoryMembers}} = await (await fetch(categoryApiUrl)).json();
 
     const tournamentUrls = [];
-    $tournaments.each((index, tournament) => {
-        const url = $(tournament).attr('href');
-
+    for (const categoryMember of categoryMembers) {
+        const url = `${urlPrefix}/${wiki}/${categoryMember.title}`;
         tournamentUrls.push(fullUrl(url));
-    });
+    }
 
     return tournamentUrls;
 };
@@ -72,13 +89,33 @@ exports.parseTournament = async tournamentUrl => {
     return tournamentData;
 };
 
-// Wrapper for fetch to set a custom user agent, because Liquipedia requires it
-function fetch(url) {
-    return realFetch(url, {
+// Wrapper for fetch to follow the Liquipedia API Terms of Use
+// See https://liquipedia.net/api-terms-of-use
+const minTimeBetweenRequests = 2500; // Liquipedia rate limit is 1 request per 2 seconds, but we add some puffer
+let lastRequest;
+async function fetch(url, acceptJsonHeader = false) {
+    // Wait if needed so we don't hit the rate limit
+    if (lastRequest) {
+        const timeToWait = minTimeBetweenRequests - (Date.now() - lastRequest);
+        if (timeToWait > 0) {
+            console.log('Waiting ' + timeToWait + 'ms...');
+            await sleep(timeToWait);
+        }
+    }
+
+    // Do the fetch
+    const response = await realFetch(url, {
         headers: {
+            // Use a custom user agent :)
             'User-Agent': 'dota2vods.tv Importer',
         },
     });
+
+    // Update last request time. We don't support parallel fetch calls
+    lastRequest = Date.now();
+
+    // Return the fetch response
+    return response;
 }
 
 function fullUrl(url) {
@@ -87,12 +124,6 @@ function fullUrl(url) {
     }
 
     return url;
-}
-
-async function loadDocument(url) {
-    const html = await (await fetch(url)).text();
-
-    return cheerio.load(html);
 }
 
 function findAndParseTemplateIncludes(source, templateName) {

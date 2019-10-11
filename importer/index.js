@@ -20,7 +20,6 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 const fs = require('fs').promises;
 const path = require('path');
 const commander = require('commander');
-const sleep = require('sleep-promise');
 
 const program = new commander.Command();
 
@@ -77,14 +76,12 @@ async function importTournament(tournamentUrl, parser) {
 async function importFromCategory(categoryUrl) {
     const parser = await selectParser(categoryUrl);
 
-    console.log('Loading tournament url from category ...');
+    console.log('Loading tournament urls from category ...');
     const tournamentUrls = await parser.parseCategory(categoryUrl);
     console.log(`Found ${tournamentUrls.length} tournaments.`);
 
     // Import every tournament in this category
     for (const tournamentUrl of tournamentUrls) {
-        await sleep(2000); // Wait two seconds between the fetches so we don't trigger any rate limits.
-                                   // Looking at you Liquipedia. ರ_ರ
         await importTournament(tournamentUrl, parser);
     }
 }

@@ -6,7 +6,6 @@
     "rmdir-recursive-async": "^0.2.2"
   },
   "devDependencies": {
-    "cheerio": "^1.0.0-rc.3",
     "commander": "^3.0.2",
     "node-fetch": "^2.6.0",
     "sleep-promise": "^8.0.1"
