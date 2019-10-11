@@ -20,6 +20,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 const fs = require('fs').promises;
 const path = require('path');
 const commander = require('commander');
+const yaml = require('js-yaml');
 
 const program = new commander.Command();
 
@@ -69,8 +70,24 @@ async function importTournament(tournamentUrl, parser) {
     }
 
     console.log(`Importing tournament ${tournamentUrl}...`);
-    const data = await parser.parseTournament(tournamentUrl);
-    console.log(JSON.stringify(data, null, 2));
+    const tournamentData = await parser.parseTournament(tournamentUrl);
+
+    const id = tournamentData.name
+        .toLowerCase()
+        .replace(/[\W-]+/g,'-')
+    ;
+    const basePath = path.resolve(__dirname, '..', 'tournaments', id);
+
+    // Aliases should be flow style
+    if (tournamentData.aliases) {
+        tournamentData.aliases = new FlowSequence(tournamentData.aliases);
+    }
+
+    // Split up tournament data into multiple files
+    tournamentData.meta = new Include(basePath, 'meta.yaml', tournamentData.meta);
+
+    // Dump data, starting with the index file
+    (new Include(basePath, 'index.yaml', tournamentData)).dump();
 }
 
 async function importFromCategory(categoryUrl) {
@@ -112,3 +129,54 @@ async function selectParser(url) {
 
     throw new Error(`No supporting parser found for url "${url}"!`);
 }
+
+class Include {
+    constructor(basePath, file, data) {
+        this.basePath = basePath;
+        this.file = file;
+        this.data = data;
+    }
+
+    async dump() {
+        const content = yaml.dump(this.data, {
+            schema: CUSTOM_SCHEMA,
+            indent: 2,
+            lineWidth: 120,
+            noRefs: true,
+            noCompatMode: true,
+        })
+            .replace(/!<!include> /g, '!include ')
+            .replace(/!<!flow-sequence> '([^']+)'/g, '$1')
+        ;
+
+        await fs.writeFile(path.join(this.basePath, this.file), content);
+        console.log('Wrote ' + path.join(this.basePath, this.file))
+    }
+}
+
+const IncludeType = new yaml.Type('!include', {
+    kind: 'scalar', // string -> !include stages/group-stage.yml
+    instanceOf: Include,
+    represent: include => {
+        include.dump();
+
+        return include.file;
+    },
+});
+
+class FlowSequence {
+    constructor(sequence) {
+        this.sequence = sequence;
+    }
+}
+
+const FlowSequenceType = new yaml.Type('!flow-sequence', {
+    kind: 'scalar',
+    instanceOf: FlowSequence,
+    represent: flowSequence => '[' + flowSequence.sequence.join(', ') + ']',
+});
+
+const CUSTOM_SCHEMA = yaml.Schema.create([
+    IncludeType,
+    FlowSequenceType,
+]);
