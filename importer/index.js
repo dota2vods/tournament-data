@@ -21,6 +21,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const commander = require('commander');
 const yaml = require('js-yaml');
+const mkdirp = require('mkdirp-promise');
 
 const program = new commander.Command();
 
@@ -149,8 +150,17 @@ class Include {
             .replace(/!<!flow-sequence> '([^']+)'/g, '$1')
         ;
 
-        await fs.writeFile(path.join(this.basePath, this.file), content);
-        console.log('Wrote ' + path.join(this.basePath, this.file))
+        // Create file path
+        const filePath = path.join(this.basePath, this.file);
+
+        // Make sure the target directory exists
+        await mkdirp(path.dirname(filePath));
+
+        // Write content
+        await fs.writeFile(filePath, content);
+
+        // Notify the user about it
+        console.log('Wrote ' + filePath)
     }
 }
 
