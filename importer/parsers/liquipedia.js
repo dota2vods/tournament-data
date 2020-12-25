@@ -28,7 +28,7 @@ const liquipediaTierTemplateToText = {
 
 exports.supports = url => url.startsWith(urlPrefix);
 
-exports.parseCategory = async categoryUrl => {
+exports.parseCollection = async categoryUrl => {
     // We need to get the pages in the category via the api, so first extract the wiki and category title from the url
     const wiki = categoryUrl.substring(urlPrefix.length + 1, categoryUrl.indexOf('/', urlPrefix.length + 1));
     const categoryTitle = categoryUrl.substr(categoryUrl.lastIndexOf('/') + 1);

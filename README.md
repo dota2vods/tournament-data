@@ -62,10 +62,11 @@ Usage: yarn importer [command] [argument]
 Importer to automatically import and update tournaments.
 
 Options:
-  -h, --help                    output usage information
+  -h, --help                      output usage information
 
 Commands:
-  import <tournament_url>       Import a new tournament or update an existing one. (Default behaviour if no command is specified)
-  from-category <category_url>  Import and update all tournaments of a category (mainly used for automation).
-  update [<tournament_folder>]  Update all imported tournaments. If <tournament_folder> is specified, only this tournament will be updated
+  import <tournament_url>         Import a new tournament or update an existing one. (Default behaviour if no command is specified)
+  from-collection <category_url>  Import and update all tournaments of a collection (mainly used for automation).
+                                  For the liquipedia importer we use category urls.
+  update [<tournament_folder>]    Update all imported tournaments. If <tournament_folder> is specified, only this tournament will be updated
 ```

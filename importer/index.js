@@ -38,11 +38,14 @@ program
     .action(tournamentUrl => importTournament(tournamentUrl).catch(e => console.error(e)))
 ;
 
-// Import from category
+// Import from collection
 program
-    .command('from-category <category_url>')
-    .description('Import and update all tournaments of a category (mainly used for automation).')
-    .action(categoryUrl => importFromCategory(categoryUrl).catch(e => console.error(e)))
+    .command('from-collection <category_url>')
+    .description(
+        'Import and update all tournaments of a collection (mainly used for automation).\n' +
+        'For the liquipedia importer we use category urls.'
+    )
+    .action(collectionUrl => importFromCollection(collectionUrl).catch(e => console.error(e)))
 ;
 
 // Update command
@@ -91,14 +94,14 @@ async function importTournament(tournamentUrl, parser) {
     (new Include(basePath, 'index.yaml', tournamentData)).dump();
 }
 
-async function importFromCategory(categoryUrl) {
-    const parser = await selectParser(categoryUrl);
+async function importFromCollection(collectionUrl) {
+    const parser = await selectParser(collectionUrl);
 
-    console.log('Loading tournament urls from category ...');
-    const tournamentUrls = await parser.parseCategory(categoryUrl);
+    console.log('Loading tournament urls from collection ...');
+    const tournamentUrls = await parser.parseCollection(collectionUrl);
     console.log(`Found ${tournamentUrls.length} tournaments.`);
 
-    // Import every tournament in this category
+    // Import every tournament in this collection
     for (const tournamentUrl of tournamentUrls) {
         await importTournament(tournamentUrl, parser);
     }
