@@ -1,14 +1,14 @@
 {
   "private": true,
   "dependencies": {
-    "js-yaml": "^3.13.1",
+    "js-yaml": "^3.14.1",
     "mkdirp-promise": "^5.0.1",
     "rmdir-recursive-async": "^0.2.2"
   },
   "devDependencies": {
-    "commander": "^4.1.0",
+    "commander": "^6.2.1",
     "node-fetch": "^2.6.1",
-    "sleep-promise": "^8.0.1"
+    "sleep-promise": "^9.0.0"
   },
   "scripts": {
     "build": "./build.js",

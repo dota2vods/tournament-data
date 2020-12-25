@@ -33,7 +33,7 @@ program
 
 // Import a single tournament
 program
-    .command('import <tournament_url>')
+    .command('import <tournament_url>', {isDefault: true})
     .description('Import a new tournament or update an existing one. (Default behaviour if no command is specified)')
     .action(tournamentUrl => importTournament(tournamentUrl).catch(e => console.error(e)))
 ;
@@ -56,15 +56,6 @@ program
         (tournamentFolder ? updateTournament(tournamentFolder) : updateAllTournaments()).catch(e => console.error(e))
     ))
 ;
-
-// Unknown command, execute default command (import)
-program.on('command:*', () => {
-    // No fitting command found, insert 'import' command at index 2 (after /usr/bin/node and ./importer/index.js')
-    process.argv.splice(2, 0, 'import');
-
-    // Re-run program
-    program.parse(process.argv);
-});
 
 program.parse(process.argv);
 

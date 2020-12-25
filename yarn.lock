@@ -9,20 +9,25 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
-commander@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.0.tgz#545983a0603fe425bc672d66c9e3c89c42121a83"
-  integrity sha512-NIQrwvv9V39FHgGFm36+U9SMQzbiHvU79k+iADraJTpmrFFfx7Ds0IvDoAdZsDrknlkRk14OYoWXb57uTh7/sw==
+commander@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
+  integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
+
+core-js@^3.6.5:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.8.1.tgz#f51523668ac8a294d1285c3b9db44025fda66d47"
+  integrity sha512-9Id2xHY1W7m8hCl8NkhQn5CufmF/WuR30BTRewvCXc1aZd3kMECwNZ69ndLbekKfakw9Rf2Xyc+QR6E7Gg+obg==
 
 esprima@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
 
-js-yaml@^3.13.1:
-  version "3.13.1"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
-  integrity sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==
+js-yaml@^3.14.1:
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
+  integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
@@ -56,10 +61,12 @@ rmdir-recursive-async@^0.2.2:
   resolved "https://registry.yarnpkg.com/rmdir-recursive-async/-/rmdir-recursive-async-0.2.2.tgz#217bd15888e5b3a637e448a29ee0d98173901efb"
   integrity sha512-G/UoX98vinCwocymsYzRRKioqcMf2mmJjpzuTL/2lA/m6AcFV07nuwgm7CxanIk+SUCyoG2t7mt0kpBz7uTNiQ==
 
-sleep-promise@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/sleep-promise/-/sleep-promise-8.0.1.tgz#8d795a27ea23953df6b52b91081e5e22665993c5"
-  integrity sha1-jXlaJ+ojlT32tSuRCB5eImZZk8U=
+sleep-promise@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/sleep-promise/-/sleep-promise-9.0.0.tgz#99bf063ee5f821edc974d9011478ed7cadfebaa3"
+  integrity sha512-7x3Fra49pMKWs0+jzOXBVR31GkP3NwmFMoxH/irXcUCUyglhPtoQa/XaC7OimjI41YEGP00StD8UlmJL/MBHlw==
+  dependencies:
+    core-js "^3.6.5"
 
 sprintf-js@~1.0.2:
   version "1.0.3"
