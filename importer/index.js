@@ -40,7 +40,7 @@ program
 
 // Import from collection
 program
-    .command('from-collection <category_url>')
+    .command('from-collection <collection_url>')
     .description(
         'Import and update all tournaments of a collection (mainly used for automation).\n' +
         'For the liquipedia importer we use category urls.'
